@@ -1,60 +1,78 @@
-
 package examenfinalparte2;
+
+import javax.swing.JOptionPane;
 
 public class Principal {
 
-    public static boolean p = false;
-    
-    public static void main(String arg[])
-        {
-        int dig=2;
-        int ndig=0;
-        if(dig<=0)
-        System.out.println("Ingrese como parámetro, un numero de digitos correcto (mayor que 0): ");
-        for(int i = 1; i <= 99999; i++ )
-        {
-            int aux = i;
- 
-            int contador=0;
- 
-            while (aux != 0)
-        {
-            aux = aux / 10;
-            contador++;
+    public static boolean imprimir = false;
+
+    public static void main(String arg[]) {
+        /**
+         * Inicialización de las variables, se ponen a 0 ya que 
+         */
+        int digito = 0;
+        int numeroDigito = 0;
+        if (digito <= 0) {
+            digito=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese como parámetro,\n un numero de digitos correcto\n (mayor que 0): "));
         }
-        ndig=contador;
-            
-            
-            if(ndig==dig){
-                   if (i < 4) p = true;
-            else
-            {
-            if (i % 2 == 0) p = false; 
-                else
-                {
-                    int contador1 = 0;  
-                    int i1 = 1; 
-                    int k = (i - 1) / 2; 
-                    if  (k % 2 == 0) k--;  
-             
-                    while(i1 <= k)
-                    {
-                        if (i % i1 == 0) contador1++;
-                            i1 += 2;
-                            if (contador1 == 2) i1 = k + 1;
+        /**
+         * Creación de un bucle
+         */
+        for (int i = 1; i <= 99999; i++) {
+            /**
+             * No podemos prescindir de la variable 'auxiliar' ya que de lo contrario, 
+             * si usásemos 'i', el bucle no sería igual ni el resultado final
+             */
+            int auxiliar = i;
+            /**
+             * Se ha eliminado la variable 'contador' ya que era innecesaria.
+             * Puesto que se tenía la variable 'ndig' (a la que se le ha cambiado el nombre)
+             * y sólo recibía el valor de 'contador'
+             */
+             numeroDigito = 0;
+
+            while (auxiliar != 0) {
+                auxiliar = auxiliar / 10;
+                numeroDigito++;
+            }
+
+            /**
+             * Comienzan las condicionales que darán valor a la variable 'imprimir'
+             * que decidirá si el valor de 'i' se imprime al final.
+             */
+            if (numeroDigito == digito) {
+                if (i < 4) {
+                    imprimir = true;
+                } else if (i % 2 == 0) {
+                    imprimir = false;
+                } else {
+                    int contador1 = 0;
+                    int numero1 = 1;
+                    int numero2 = (i - 1) / 2;
+                    if (numero2 % 2 == 0) {
+                        numero2--;
                     }
- 
-        if (contador1 == 1) p = true;
-            } 
-        } 
-     
-                if (p == true) 
-                    System.out.println(i);    
+
+                    while (numero1 <= numero2) {
+                        if (i % numero1 == 0) {
+                            contador1++;
+                        }
+                        numero1 += 2;
+                        if (contador1 == 2) {
+                            numero1 = numero2 + 1;
+                        }
+                    }
+
+                    if (contador1 == 1) {
+                        imprimir = true;
+                    }
+                }
+
+                if (imprimir == true) {
+                    System.out.println(i);
+                }
             }
         }
-        }
- 
-       
- 
-    
+    }
+
 }
