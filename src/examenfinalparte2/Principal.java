@@ -6,6 +6,10 @@ import javax.swing.JOptionPane;
 
 public class Principal {
 
+    /**
+     * Se ha modificado el nombre de la variable para que sea más intuitiva.
+     * Esta varibale dictaminará si el valor saldrá por pantala o no
+     */
     public static boolean imprimir = false;
 
     public static void main(String arg[]) {
