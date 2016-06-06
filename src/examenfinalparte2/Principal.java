@@ -1,5 +1,7 @@
 package examenfinalparte2;
 
+import static examenfinalparte2.Metodos.imprimeDatos;
+import static examenfinalparte2.Metodos.insertaDatos;
 import javax.swing.JOptionPane;
 
 public class Principal {
@@ -8,28 +10,29 @@ public class Principal {
 
     public static void main(String arg[]) {
         /**
-         * Inicialización de las variables, se ponen a 0 ya que 
+         * Inicialización de las variables, se ponen a 0 ya que
          */
         int digito = 0;
-        int numeroDigito = 0;
+
         if (digito <= 0) {
-            digito=Integer.parseInt(JOptionPane.showInputDialog(null,"Ingrese como parámetro,\n un numero de digitos correcto\n (mayor que 0): "));
+            digito = insertaDatos();
         }
         /**
          * Creación de un bucle
          */
         for (int i = 1; i <= 99999; i++) {
             /**
-             * No podemos prescindir de la variable 'auxiliar' ya que de lo contrario, 
-             * si usásemos 'i', el bucle no sería igual ni el resultado final
+             * No podemos prescindir de la variable 'auxiliar' ya que de lo
+             * contrario, si usásemos 'i', el bucle no sería igual ni el
+             * resultado final
              */
             int auxiliar = i;
             /**
              * Se ha eliminado la variable 'contador' ya que era innecesaria.
-             * Puesto que se tenía la variable 'ndig' (a la que se le ha cambiado el nombre)
-             * y sólo recibía el valor de 'contador'
+             * Puesto que se tenía la variable 'ndig' (a la que se le ha
+             * cambiado el nombre) y sólo recibía el valor de 'contador'
              */
-             numeroDigito = 0;
+            int numeroDigito = 0;
 
             while (auxiliar != 0) {
                 auxiliar = auxiliar / 10;
@@ -37,8 +40,9 @@ public class Principal {
             }
 
             /**
-             * Comienzan las condicionales que darán valor a la variable 'imprimir'
-             * que decidirá si el valor de 'i' se imprime al final.
+             * Comienzan las condicionales que darán valor a la variable
+             * 'imprimir' que decidirá si el valor de 'i' se imprime al final o
+             * no.
              */
             if (numeroDigito == digito) {
                 if (i < 4) {
@@ -69,7 +73,7 @@ public class Principal {
                 }
 
                 if (imprimir == true) {
-                    System.out.println(i);
+                    imprimeDatos(i);
                 }
             }
         }
